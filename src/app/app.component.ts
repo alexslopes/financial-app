@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'financial-app';
+  isMenuOpen = false;
+
+  teste(isOpened: boolean)
+  {
+    console.log(isOpened);
+  }
 }
