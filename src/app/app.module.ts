@@ -19,6 +19,7 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 import {MatGridListModule} from '@angular/material/grid-list';
+import {MatTableModule} from '@angular/material/table';
 
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 
@@ -46,6 +47,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     MatListModule,
     MatGridListModule,
     NgxChartsModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
