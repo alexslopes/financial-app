@@ -22,6 +22,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {MatTableModule} from '@angular/material/table';
 
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { OutgoingComponent } from './outgoing/outgoing.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     DashboardComponent,
     ReportsComponent,
     NewRegistryComponent,
-    MainNavComponent
+    MainNavComponent,
+    OutgoingComponent
   ],
   imports: [
     BrowserModule,
