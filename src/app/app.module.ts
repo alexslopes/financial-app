@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -10,7 +9,6 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatIconModule } from '@angular/material/icon';
-import { ReportsComponent } from './reports/reports.component';
 import { NewRegistryComponent } from './new-registry/new-registry.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { FormsModule } from '@angular/forms';
@@ -23,12 +21,12 @@ import {MatTableModule} from '@angular/material/table';
 
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { OutgoingComponent } from './outgoing/outgoing.component';
+import { AppRoutingModule } from './app-routing/app-routing.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
-    ReportsComponent,
     NewRegistryComponent,
     MainNavComponent,
     OutgoingComponent
