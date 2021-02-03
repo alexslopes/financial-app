@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-new-registry',
@@ -7,9 +8,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewRegistryComponent implements OnInit {
 
-  constructor() { }
+  registryForm: FormGroup;
+
+  constructor(
+    private rf: FormBuilder
+  ) {
+    this.createForm();
+   }
 
   ngOnInit(): void {
+  }
+
+  createForm() {
+    this.registryForm = this.rf.group({
+      description: ['', Validators.required],
+      value: ['', Validators.required],
+      category: ['', ],
+      date: ['', ],
+      type: ['', Validators.required],
+    });
   }
 
 }
