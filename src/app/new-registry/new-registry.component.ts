@@ -29,4 +29,8 @@ export class NewRegistryComponent implements OnInit {
     });
   }
 
+  onSubmit() {
+
+  }
+
 }

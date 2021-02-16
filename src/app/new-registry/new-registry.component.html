@@ -1,5 +1,50 @@
-<div>
-<form [formGroup]="registryForm" >
 
-</form>
+<h3>New Registry</h3>
+<hr>
+<h3></h3>
+<div class="form-size" >
+  <form validate [formGroup]="registryForm" (ngSubmit)="onSubmit()">
+    <p>
+    <mat-form-field appearance="fill">
+      <mat-label>Description</mat-label>
+      <input matInput formControlName="description" placeholder="Description" type="text" required>
+    </mat-form-field>
+  </p>
+
+  <p>
+    <mat-form-field class="fill">
+      <input matInput formControlName="value" placeholder="Value" type="number" step=".01" required>
+    </mat-form-field>
+  </p>
+
+  <p>
+    <mat-form-field class="fill">
+      <mat-label for="category">Category:</mat-label>
+      <mat-select>
+        <mat-option value="one">First option</mat-option>
+        <mat-option value="two">Second option</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </p>
+
+  <p>
+    <mat-form-field class="fill">
+      <mat-label for="date">Date:</mat-label>
+      <input matInput type="date" id="date" name="date" required>
+    </mat-form-field>
+  </p>
+
+  <p>
+    <mat-radio-group aria-label="Select an option">
+      <mat-radio-button value="expensive">Expensive</mat-radio-button>
+      <mat-radio-button value="income">Income</mat-radio-button>
+    </mat-radio-group>
+  </p>
+
+  <button type="submit" mat-button class="background-primary text-floral-white"
+       [disabled]="registryForm.invalid">Submit</button>
+
+  </form>
+
+
 </div>
