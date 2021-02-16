@@ -3,17 +3,23 @@
 <hr>
 <h3></h3>
 <div class="form-size" >
-  <form validate [formGroup]="registryForm" (ngSubmit)="onSubmit()">
+  <form novalidate [formGroup]="registryForm" (ngSubmit)="onSubmit()">
     <p>
     <mat-form-field appearance="fill">
       <mat-label>Description</mat-label>
       <input matInput formControlName="description" placeholder="Description" type="text" required>
+      <mat-error *ngIf="formErrors.description">
+        {{ formErrors.description }}
+      </mat-error>
     </mat-form-field>
   </p>
 
   <p>
     <mat-form-field class="fill">
       <input matInput formControlName="value" placeholder="Value" type="number" step=".01" required>
+      <mat-error *ngIf="formErrors.value">
+        {{ formErrors.value }}
+      </mat-error>
     </mat-form-field>
   </p>
 
@@ -30,7 +36,10 @@
   <p>
     <mat-form-field class="fill">
       <mat-label for="date">Date:</mat-label>
-      <input matInput type="date" id="date" name="date" required>
+      <input matInput formControlName="date" type="date" id="date" name="date" required>
+      <mat-error *ngIf="formErrors.date">
+        {{ formErrors.date }}
+      </mat-error>
     </mat-form-field>
   </p>
 
