@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Report } from '../shared/report';
+import { ReportList } from '../shared/reportList';
 
 @Component({
   selector: 'app-new-registry',
@@ -9,6 +11,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class NewRegistryComponent implements OnInit {
 
   registryForm: FormGroup;
+  report: Report;
+  reportList: ReportList;
 
   formErrors = {
     'description': '',
@@ -34,6 +38,7 @@ export class NewRegistryComponent implements OnInit {
     private rf: FormBuilder
   ) {
     this.createForm();
+    this.reportList = new ReportList;
    }
 
   ngOnInit(): void {
@@ -70,7 +75,10 @@ export class NewRegistryComponent implements OnInit {
   }
 
   onSubmit() {
+    this.report = this.registryForm.value;
+    this.reportList.reportList.push(this.report);
 
+    console.log(this.reportList);
   }
 
 }

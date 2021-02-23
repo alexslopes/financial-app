@@ -11,6 +11,7 @@ import { NewRegistryComponent } from './new-registry/new-registry.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MainNavComponent } from './main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
+import { HttpClientModule } from '@angular/common/http';
 
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { OutgoingComponent } from './outgoing/outgoing.component';
@@ -27,6 +28,7 @@ import { MatGridListModule} from '@angular/material/grid-list';
 import { MatInputModule } from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import {MatRadioModule} from '@angular/material/radio';
+import { ReportList } from './shared/reportList';
 
 @NgModule({
   declarations: [
@@ -57,9 +59,12 @@ import {MatRadioModule} from '@angular/material/radio';
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
-    MatRadioModule
+    MatRadioModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    ReportList
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

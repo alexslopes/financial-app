@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Report } from '../shared/report';
+import { ReportList } from '../shared/reportList';
 
 @Component({
   selector: 'app-outgoing',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OutgoingComponent implements OnInit {
 
-  constructor() { }
+  public reportList;
+
+  constructor(
+    reportList: ReportList
+  ) {
+    this.reportList = reportList.reportList
+  }
 
   ngOnInit(): void {
+    this
   }
 
 }
