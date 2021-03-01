@@ -1,15 +1,18 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { baseURL } from '../shared/baseurl';
 import { Report } from '../shared/report';
+import { map, catchError } from 'rxjs/operators';
+import { ProcessHTTPMsgService } from './process-httpmsg.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ReportService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+    private processHTTPMsgService: ProcessHTTPMsgService) { }
 
   putReport(report: Report): Observable<Report> {
     const httpOptions = {
@@ -19,5 +22,6 @@ export class ReportService {
     };
 
     return this.http.put<Report>(baseURL + 'reports/' + report.id, report, httpOptions)
+    .pipe(catchError(this.processHTTPMsgService.handleError));
   }
 }
