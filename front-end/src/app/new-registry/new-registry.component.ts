@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ReportService } from '../services/report.service';
 import { Report } from '../shared/report';
 import { ReportList } from '../shared/reportList';
 
@@ -12,7 +13,6 @@ export class NewRegistryComponent implements OnInit {
 
   registryForm: FormGroup;
   report: Report;
-  reportList: ReportList;
 
   formErrors = {
     'description': '',
@@ -35,10 +35,10 @@ export class NewRegistryComponent implements OnInit {
   };
 
   constructor(
-    private rf: FormBuilder
+    private rf: FormBuilder,
+    private reportService: ReportService
   ) {
     this.createForm();
-    this.reportList = new ReportList;
    }
 
   ngOnInit(): void {
@@ -76,9 +76,11 @@ export class NewRegistryComponent implements OnInit {
 
   onSubmit() {
     this.report = this.registryForm.value;
-    this.reportList.reportList.push(this.report);
 
-    console.log(this.reportList);
+    console.log(this.report);
+
+    this.reportService.putReport(this.report)
+    .subscribe(report => console.log("retorno: " + report));
   }
 
 }

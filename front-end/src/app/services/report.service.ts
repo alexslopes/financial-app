@@ -21,7 +21,7 @@ export class ReportService {
       })
     };
 
-    return this.http.put<Report>(baseURL + 'reports/' + report.id, report, httpOptions)
+    return this.http.post<Report>(baseURL + 'reports/', report, httpOptions)
     .pipe(catchError(this.processHTTPMsgService.handleError));
   }
 }
