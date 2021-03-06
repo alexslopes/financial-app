@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ReportService } from '../services/report.service';
 import { Report } from '../shared/report';
 import { ReportList } from '../shared/reportList';
 
@@ -8,17 +9,17 @@ import { ReportList } from '../shared/reportList';
   styleUrls: ['./outgoing.component.scss']
 })
 export class OutgoingComponent implements OnInit {
-
-  public reportList;
+  displayedColumns: string[] = ['description', 'value', 'date'];
+  public reportList: Array<Report>;
 
   constructor(
-    reportList: ReportList
+    private reportService: ReportService
   ) {
-    this.reportList = reportList.reportList
   }
 
   ngOnInit(): void {
-    this
+    this.reportService.getDishes()
+    .subscribe(reports => this.reportList = reports);
   }
 
 }

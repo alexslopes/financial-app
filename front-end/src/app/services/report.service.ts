@@ -14,6 +14,11 @@ export class ReportService {
   constructor(private http: HttpClient,
     private processHTTPMsgService: ProcessHTTPMsgService) { }
 
+  getDishes(): Observable<Report[]> {
+    return this.http.get<Report[]>(baseURL + 'reports')
+      .pipe(catchError(this.processHTTPMsgService.handleError));
+  }
+
   putReport(report: Report): Observable<Report> {
     const httpOptions = {
       headers: new HttpHeaders({

@@ -28,6 +28,8 @@ import { MatGridListModule} from '@angular/material/grid-list';
 import { MatInputModule } from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import {MatRadioModule} from '@angular/material/radio';
+import {MatPaginatorModule} from '@angular/material/paginator';
+
 import { ReportList } from './shared/reportList';
 
 import { baseURL } from './shared/baseurl';
@@ -63,7 +65,8 @@ import { ProcessHTTPMsgService } from './services/process-httpmsg.service';
     MatInputModule,
     MatSelectModule,
     MatRadioModule,
-    HttpClientModule
+    HttpClientModule,
+    MatPaginatorModule
   ],
   providers: [
     ReportList,
