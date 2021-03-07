@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ReportService } from '../services/report.service';
 import { Report } from '../shared/report';
-import { ReportList } from '../shared/reportList';
 
 @Component({
   selector: 'app-new-registry',
@@ -79,8 +78,7 @@ export class NewRegistryComponent implements OnInit {
 
     console.log(this.report);
 
-    this.reportService.putReport(this.report)
-    .subscribe(report => console.log("retorno: " + report));
+    this.reportService.putReport(this.report);
   }
 
 }

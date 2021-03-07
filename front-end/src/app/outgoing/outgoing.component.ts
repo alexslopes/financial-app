@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ReportService } from '../services/report.service';
 import { Report } from '../shared/report';
-import { ReportList } from '../shared/reportList';
 
 @Component({
   selector: 'app-outgoing',
@@ -18,7 +17,7 @@ export class OutgoingComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.reportService.getDishes()
+    this.reportService.getReports()
     .subscribe(reports => this.reportList = reports);
   }
 

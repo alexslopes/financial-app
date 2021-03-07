@@ -30,10 +30,9 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatPaginatorModule} from '@angular/material/paginator';
 
-import { ReportList } from './shared/reportList';
-
 import { baseURL } from './shared/baseurl';
 import { ProcessHTTPMsgService } from './services/process-httpmsg.service';
+import { ReportService } from './services/report.service';
 
 @NgModule({
   declarations: [
@@ -69,8 +68,7 @@ import { ProcessHTTPMsgService } from './services/process-httpmsg.service';
     MatPaginatorModule
   ],
   providers: [
-    ReportList,
-    ProcessHTTPMsgService,
+    ReportService,
     {provide: 'BaseURL', useValue: baseURL}
   ],
   bootstrap: [AppComponent]

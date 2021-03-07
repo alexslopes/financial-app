@@ -5,28 +5,28 @@ import { baseURL } from '../shared/baseurl';
 import { Report } from '../shared/report';
 import { map, catchError } from 'rxjs/operators';
 import { ProcessHTTPMsgService } from './process-httpmsg.service';
+import { Optional } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ReportService {
 
-  constructor(private http: HttpClient,
-    private processHTTPMsgService: ProcessHTTPMsgService) { }
 
-  getDishes(): Observable<Report[]> {
-    return this.http.get<Report[]>(baseURL + 'reports')
-      .pipe(catchError(this.processHTTPMsgService.handleError));
+
+  constructor(
+    @Optional() private reportList: Array<Report>
+  ) {
+  }
+
+  getReports(): Observable<Report[]> {
+    return of(this.reportList);
   }
 
   putReport(report: Report): Observable<Report> {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json'
-      })
-    };
-
-    return this.http.post<Report>(baseURL + 'reports/', report, httpOptions)
-    .pipe(catchError(this.processHTTPMsgService.handleError));
+    if(this.reportList == null)
+      this.reportList = [];
+    this.reportList.push(report);
+    return of(report);
   }
 }
