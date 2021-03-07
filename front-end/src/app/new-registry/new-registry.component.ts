@@ -12,6 +12,7 @@ export class NewRegistryComponent implements OnInit {
 
   registryForm: FormGroup;
   report: Report;
+  type: string;
 
   formErrors = {
     'description': '',
@@ -47,7 +48,9 @@ export class NewRegistryComponent implements OnInit {
     this.registryForm = this.rf.group({
       description: ['', Validators.required],
       value: ['', Validators.required],
-      date: ['', Validators.required]
+      date: ['', Validators.required],
+      type: ['', Validators.required],
+      category: ['', Validators.required]
     });
 
     this.registryForm.valueChanges

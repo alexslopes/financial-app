@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ReportService } from '../services/report.service';
 import { single } from './data';
 
 export interface PeriodicElement {
@@ -22,6 +23,8 @@ const ELEMENT_DATA: PeriodicElement[] = [
 export class DashboardComponent implements OnInit {
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   dataSource = ELEMENT_DATA;
+  public totalIncome: number;
+  public totalOutcome: number;
 
   single: any[];
   multi: any[];
@@ -45,12 +48,19 @@ export class DashboardComponent implements OnInit {
     domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
   };
 
-  constructor() {
+  constructor(
+    private reportService: ReportService
+  ) {
     Object.assign(this, { single })
   }
 
 
   ngOnInit(): void {
+     this.reportService.getTotalIncomes()
+    .subscribe(total => this.totalIncome = total);
+
+    this.reportService.getTotalOutgoing()
+    .subscribe(total => this.totalOutcome = total);
   }
 
   onSelect(event) {

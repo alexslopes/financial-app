@@ -8,7 +8,7 @@ import { Report } from '../shared/report';
   styleUrls: ['./outgoing.component.scss']
 })
 export class OutgoingComponent implements OnInit {
-  displayedColumns: string[] = ['description', 'value', 'date'];
+  displayedColumns: string[] = ['description', 'value', 'date', 'type', 'category'];
   public reportList: Array<Report>;
 
   constructor(

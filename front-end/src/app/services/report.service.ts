@@ -12,7 +12,8 @@ import { Optional } from '@angular/core';
 })
 export class ReportService {
 
-
+  private totalIncomes: number = 0;
+  private totalOutgoing: number = 0;
 
   constructor(
     @Optional() private reportList: Array<Report>
@@ -26,7 +27,21 @@ export class ReportService {
   putReport(report: Report): Observable<Report> {
     if(this.reportList == null)
       this.reportList = [];
+
+    if(report.type === "incomes")
+      this.totalIncomes += report.value;
+    else
+      this.totalOutgoing += report.value;
+
     this.reportList.push(report);
     return of(report);
+  }
+
+  getTotalIncomes(): Observable<number> {
+    return of(this.totalIncomes);
+  }
+
+  getTotalOutgoing(): Observable<number> {
+    return of(this.totalOutgoing);
   }
 }
