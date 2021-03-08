@@ -15,4 +15,4 @@ export var categoryList = [
     "name": "job",
     "value": 0
   }
-]
+];

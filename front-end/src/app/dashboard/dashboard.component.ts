@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ReportService } from '../services/report.service';
 import { single } from './data';
+import { categoryList } from '../shared/category';
 
 export interface PeriodicElement {
   name: string;
@@ -26,7 +27,7 @@ export class DashboardComponent implements OnInit {
   public totalIncome: number;
   public totalOutcome: number;
 
-  single: any[];
+  categoryList: any[];
   multi: any[];
 
   view: any[] = [700, 400];
@@ -51,7 +52,7 @@ export class DashboardComponent implements OnInit {
   constructor(
     private reportService: ReportService
   ) {
-    Object.assign(this, { single })
+    Object.assign(this, { categoryList })
   }
 
 

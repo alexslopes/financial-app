@@ -40,7 +40,7 @@ export class ReportService {
 
     console.log(categoryList);
 
-    categoryList[index].value ++;
+    categoryList[index].value = report.value;
 
     this.reportList.push(report);
     return of(report);
