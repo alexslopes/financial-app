@@ -6,6 +6,8 @@ import { Report } from '../shared/report';
 import { map, catchError } from 'rxjs/operators';
 import { ProcessHTTPMsgService } from './process-httpmsg.service';
 import { Optional } from '@angular/core';
+import { createHostListener } from '@angular/compiler/src/core';
+import { categoryList } from '../shared/category';
 
 @Injectable({
   providedIn: 'root'
@@ -14,10 +16,9 @@ export class ReportService {
 
   private totalIncomes: number = 0;
   private totalOutgoing: number = 0;
+  private reportList: Array<Report>;
 
-  constructor(
-    @Optional() private reportList: Array<Report>
-  ) {
+  constructor( ) {
   }
 
   getReports(): Observable<Report[]> {
@@ -32,6 +33,14 @@ export class ReportService {
       this.totalIncomes += report.value;
     else
       this.totalOutgoing += report.value;
+
+    var index = categoryList.findIndex( obj => {
+      return obj.name === report.category
+    })
+
+    console.log(categoryList);
+
+    categoryList[index].value ++;
 
     this.reportList.push(report);
     return of(report);
