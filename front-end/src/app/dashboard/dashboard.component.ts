@@ -61,8 +61,6 @@ export class DashboardComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.mockExpensive();
-    this.mockIncome();
 
     this.reportService.getTotalIncomes()
     .subscribe(total => this.totalIncome = total);
