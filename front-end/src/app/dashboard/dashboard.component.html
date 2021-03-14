@@ -2,13 +2,13 @@
   <mat-grid-tile>
     <div class="container">
       <h4>TOTAL OUTGOING</h4>
-      <p>$ {{this.totalIncome}}</p>
+      <p>$ {{this.totalOutcome}}</p>
     </div>
   </mat-grid-tile>
   <mat-grid-tile>
     <div class="container">
       <h4>TOTAL INCOME</h4>
-      <p>$ {{this.totalOutcome}}</p>
+      <p>$ {{this.totalIncome}}</p>
     </div>
   </mat-grid-tile>
   <mat-grid-tile>
@@ -32,16 +32,30 @@
 
 <mat-grid-list cols="2" rowHeight="2:1">
   <mat-grid-tile colspan="1">
-      <ngx-charts-bar-vertical [view]="view" [scheme]="colorScheme" [results]="categoryList" [gradient]="gradient"
-        [xAxis]="showXAxis" [yAxis]="showYAxis" [legend]="showLegend" [showXAxisLabel]="showXAxisLabel"
-        [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel" (select)="onSelect($event)">
-      </ngx-charts-bar-vertical>
+    <mat-list style="margin: 10px;" >
+      <mat-list-item>
+          <h1>Top Expensives</h1>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item *ngFor="let i of reportListExpensive" style="display: block;">
+        <div style="text-align: right;">{{i.description}}</div>
+        <div style="text-align: left;">{{i.value}}</div>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+    </mat-list>
   </mat-grid-tile>
 
   <mat-grid-tile colspan="1">
-      <ngx-charts-bar-vertical [view]="view" [scheme]="colorScheme" [results]="categoryList" [gradient]="gradient"
-        [xAxis]="showXAxis" [yAxis]="showYAxis" [legend]="showLegend" [showXAxisLabel]="showXAxisLabel"
-        [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel" (select)="onSelect($event)">
-      </ngx-charts-bar-vertical>
-    </mat-grid-tile>
+    <mat-list style="margin: 10px;" >
+      <mat-list-item>
+        <h1>Top Incomes</h1>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+      <mat-list-item *ngFor="let i of reportListIncome" style="display: block;">
+        <div style="text-align: right;">{{i.description}}</div>
+        <div style="text-align: left;">{{i.value}}</div>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+    </mat-list>
+  </mat-grid-tile>
 </mat-grid-list>

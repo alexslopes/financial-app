@@ -19,6 +19,7 @@ export class ReportService {
   private reportList: Array<Report>;
 
   constructor( ) {
+
   }
 
   getReports(): Observable<Report[]> {
@@ -44,6 +45,31 @@ export class ReportService {
 
     this.reportList.push(report);
     return of(report);
+  }
+
+  putReportList(reports: Array<Report>): Observable<Array<Report>> {
+    reports.forEach(report => {
+      if(this.reportList == null)
+      this.reportList = [];
+
+    if(report.type === "income")
+      this.totalIncomes += report.value;
+    else
+      this.totalOutgoing += report.value;
+
+    var index = categoryList.findIndex( obj => {
+      return obj.name === report.category
+    })
+
+    console.log(categoryList);
+
+    categoryList[index].value = report.value;
+
+    this.reportList.push(report);
+
+
+    });
+    return of(reports);
   }
 
   getTotalIncomes(): Observable<number> {

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ReportService } from '../services/report.service';
 import { single } from './data';
 import { categoryList } from '../shared/category';
+import { Report } from '../shared/report';
 
 export interface PeriodicElement {
   name: string;
@@ -22,10 +23,13 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+  displayedColumns: string[] = ['description', 'value', 'date', 'type', 'category'];
   dataSource = ELEMENT_DATA;
   public totalIncome: number;
   public totalOutcome: number;
+
+  public reportListExpensive: Array<Report>;
+  public reportListIncome: Array<Report>;
 
   categoryList: any[];
   multi: any[];
@@ -57,11 +61,24 @@ export class DashboardComponent implements OnInit {
 
 
   ngOnInit(): void {
-     this.reportService.getTotalIncomes()
+    this.mockExpensive();
+    this.mockIncome();
+
+    this.reportService.getTotalIncomes()
     .subscribe(total => this.totalIncome = total);
 
     this.reportService.getTotalOutgoing()
     .subscribe(total => this.totalOutcome = total);
+
+    this.reportService.getReports()
+    .subscribe(reports => this.reportListExpensive = reports.
+      filter(value => value.type === "expensive")
+      .sort(this.orderValue));
+
+      this.reportService.getReports()
+    .subscribe(reports => this.reportListIncome = reports.
+      filter(value => value.type === "income")
+      .sort(this.orderValue));
   }
 
   onSelect(event) {
@@ -74,6 +91,47 @@ export class DashboardComponent implements OnInit {
 
   onDeactivate(data): void {
     console.log('Deactivate', JSON.parse(JSON.stringify(data)));
+  }
+
+  orderValue(a, b) {
+    return a - b;
+  }
+
+  mockExpensive() {
+    let report: Report = new Report;
+    report.id = 0;
+    report.description = "Teste";
+    report.value = 10;
+    report.date = new Date(Date.now());
+    report.type = "expensive";
+    report.category = "home";
+
+    let reportList = new Array<Report>();
+    reportList.push(report);
+    reportList.push(report);
+    reportList.push(report);
+    reportList.push(report);
+    reportList.push(report);
+
+    this.reportService.putReportList(reportList);
+  }
+
+  mockIncome() {
+    let report: Report = new Report;
+    report.description = "Teste";
+    report.value = 10;
+    report.date = new Date("2021-03-03");
+    report.type = "income";
+    report.category = "home";
+
+    let reportList = new Array<Report>();
+    reportList.push(report);
+    reportList.push(report);
+    reportList.push(report);
+    reportList.push(report);
+    reportList.push(report);
+
+    this.reportService.putReportList(reportList);
   }
 
 }
