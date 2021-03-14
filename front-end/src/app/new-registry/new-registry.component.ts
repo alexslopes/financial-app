@@ -82,6 +82,14 @@ export class NewRegistryComponent implements OnInit {
     console.log(this.report);
 
     this.reportService.putReport(this.report);
+
+    this.registryForm.reset({
+      description: '',
+      value:'',
+      date: '',
+      type: '',
+      category: ''
+    })
   }
 
 }
