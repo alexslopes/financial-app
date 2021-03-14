@@ -33,6 +33,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import { baseURL } from './shared/baseurl';
 import { ProcessHTTPMsgService } from './services/process-httpmsg.service';
 import { ReportService } from './services/report.service';
+import { ExportService } from './services/export.service';
 
 @NgModule({
   declarations: [
@@ -69,6 +70,7 @@ import { ReportService } from './services/report.service';
   ],
   providers: [
     ReportService,
+    ExportService,
     {provide: 'BaseURL', useValue: baseURL}
   ],
   bootstrap: [AppComponent]
