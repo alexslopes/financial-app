@@ -34,7 +34,7 @@ export class DashboardComponent implements OnInit {
   categoryList: any[];
   multi: any[];
 
-  view: any[] = [700, 400];
+  view: [number, number] = [700, 400];
 
   // options para o gráficos
   showXAxis = true;
