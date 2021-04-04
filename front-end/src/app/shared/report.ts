@@ -5,4 +5,5 @@ export class Report {
   date: Date;
   type: string;
   category: string;
+  account: string;
 }
