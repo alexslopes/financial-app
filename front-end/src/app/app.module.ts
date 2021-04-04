@@ -34,6 +34,8 @@ import { baseURL } from './shared/baseurl';
 import { ProcessHTTPMsgService } from './services/process-httpmsg.service';
 import { ReportService } from './services/report.service';
 import { ExportService } from './services/export.service';
+import { AccountsComponent } from './accounts/accounts.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,9 @@ import { ExportService } from './services/export.service';
     DashboardComponent,
     NewRegistryComponent,
     MainNavComponent,
-    OutgoingComponent
+    OutgoingComponent,
+    AccountsComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
