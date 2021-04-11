@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ReportService } from '../services/report.service';
+import {   MatDialog, MatDialogRef  } from '@angular/material/dialog';
 import { Report } from '../shared/report';
 
 @Component({
@@ -36,7 +37,8 @@ export class NewRegistryComponent implements OnInit {
 
   constructor(
     private rf: FormBuilder,
-    private reportService: ReportService
+    private reportService: ReportService,
+    public dialogRef: MatDialogRef<NewRegistryComponent>
   ) {
     this.createForm();
    }

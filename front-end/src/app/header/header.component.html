@@ -3,10 +3,10 @@
   <div class="options">
     <a mat-button routerLink="/dashboard"> <mat-icon class="material-icons-outlined" aria-label="Side nav toggle icon">home</mat-icon></a>
     <a mat-button routerLink="/dashboard"> <mat-icon class="material-icons-outlined" aria-label="Side nav toggle icon">account_balance</mat-icon></a>
+    <a mat-button routerLink="/dashboard"> <mat-icon class="material-icons-outlined" aria-label="Side nav toggle icon">summarize</mat-icon></a>
     <a mat-button routerLink="/dashboard"> <mat-icon class="material-icons-outlined" aria-label="Side nav toggle icon">cloud_download</mat-icon></a>
-    <!-- <a mat-button routerLink="/new-registry"> <mat-icon aria-label="Side nav toggle icon">add_circle</mat-icon></a>
-    <a mat-button routerLink="/outgoing"> <mat-icon aria-label="Side nav toggle icon">request_quote</mat-icon></a> -->
+    <!--<a mat-button routerLink="/outgoing"> <mat-icon aria-label="Side nav toggle icon">request_quote</mat-icon></a> -->
   </div>
   <span class="flex-spacer"></span>
-  <a class="add-button" mat-fab><mat-icon>add</mat-icon></a>
+  <a class="add-button" mat-fab (click)="openLoginForm()"><mat-icon>add</mat-icon></a>
 </mat-toolbar>
